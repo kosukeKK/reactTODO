@@ -1,26 +1,35 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { helloAction } from '../actions';
+import { addTodo, toggleTodo } from '../actions';
 
-const App = (that: any) => (
+const App = (that: any) => {
+    let input: any;
+    return(
     <div>
-        <input type='text'></input>
-        <button onClick={() => that.dispatch(helloAction('text'))} />
+        <input type='text' ref={(node) => {input = node; }}/>
+        <button onClick={() => clickAddTodo(that.dispatch, input)}>Add</button>
         <ul>
-            {todoList(that.state.todos)}
+            {todoList(that.dispatch, that.state.todos)}
         </ul>
     </div>
-);
+    );
+};
+
+const clickAddTodo = (dispatch: any, input: any) => {
+    if (input.value === '') {return; }
+    dispatch(addTodo(input.value));
+    input.value = '';
+};
 
 const mapStateToProps = (state: number) => {
     return { state };
 };
 
-const todoList = (todos: Array<any>) => {
+const todoList = (dispatch: any, todos: Array<any>) => {
     let list: Array<any> = [];
-    if (todos.length === 0) {return 'Hello World'; }
-    for (let i = 0; i < todos.length; i++) {
-        list.push(<li key={todos[i].id.toString()}>{todos[i].text}</li>);
+    if (todos.length === 0) {return ''; }
+    for (let todo of todos) {
+        list.push(<li key={todo.id.toString()} onClick={() => dispatch(toggleTodo(todo.id))} style={{textDecoration: todo.completed ? 'line-through' : 'none'}}>{todo.text}</li>);
     }
     return list;
 };
