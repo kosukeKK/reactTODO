@@ -4,5 +4,9 @@ export const addTodo = (text: string) => {
 };
 
 export const toggleTodo = (id: number) => {
-    return { type: 'TOGGLE_TODO', id};
+    return { type: 'TOGGLE_TODO', id };
+};
+
+export const todosStatusFilter = (filter: string) => {
+    return { type: 'SET_VISIBILITY_FILTER', filter }
 };
