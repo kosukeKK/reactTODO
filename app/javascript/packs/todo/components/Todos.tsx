@@ -10,7 +10,7 @@ const Todos = (that: any) => {
             <input type='text' ref={(node) => { input = node; }} />
             <button onClick={() => clickAddTodo(that.dispatch, input)}>Add</button><br />
             <button onClick={() => that.dispatch(todosStatusFilter('SHOW_ALL'))}>SHOW ALL</button>
-            <button onClick={() => that.dispatch(todosStatusFilter('SHOW_COMPLETED'))}>COMPLETED</button>
+            <button onClick={() => that.dispatch(todosStatusFilter('SHOW_COMPLETED'))}>SHOW COMPLETED</button>
             <button onClick={() => that.dispatch(todosStatusFilter('SHOW_ACTIVE'))}>SHOW ACTIVE</button><br />
             <VisibleTodoList />
         </div>

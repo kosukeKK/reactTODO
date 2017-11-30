@@ -1,11 +1,16 @@
 {
     "rules": {
         "trailing-comma": [
-            false
+            true,
+            {
+                "multiline": "always",
+                "singleline": "never"
+            }
         ],
+
         "class-name": true,
         "curly": true,
-        "eofline": false,
+        "eofline": true,
         "forin": true,
         "indent": [
             true,

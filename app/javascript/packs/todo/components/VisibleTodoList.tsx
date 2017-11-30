@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { toggleTodo } from '../actions';
 
 const VisibleTodoList = (that: any) => {
-    { console.log(that) }
     return (
         <div>
             <ul>
