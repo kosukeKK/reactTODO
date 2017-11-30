@@ -27,6 +27,4 @@ const mapStateToProps = (state: number) => {
     return { state };
 };
 
-
-
 export default connect(mapStateToProps)(Todos);
